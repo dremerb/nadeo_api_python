@@ -1,4 +1,5 @@
 from nadeo_api.authenticators.ubisoft import UbisoftAuthenticator
+from nadeo_api.nadeo_services import NadeoServices
 from nadeo_api.ubisoft_services import UbisoftServices
 from nadeo_api.nadeo_live_services import NadeoLiveServices
 
@@ -9,4 +10,5 @@ class NadeoAPI:
         # force login by accessing variable. Raises error on bad credentials
         self.ubisoft_authenticator.ticket
         self.ubisoft_services = UbisoftServices(self.ubisoft_authenticator, user_agent)
+        self.nadeo_services = NadeoServices(self.ubisoft_authenticator, user_agent)
         self.nadeo_live_services = NadeoLiveServices(self.ubisoft_authenticator, user_agent)
