@@ -7,6 +7,7 @@ from nadeo_api.authenticators.nadeo import NadeoAuthenticator
 
 class NadeoServices(NadeoAuthenticator):
     def __init__(self, ubisoft_authenticator, user_agent: str):
+        super().__init__(ubisoft_authenticator, "NadeoServices")
         self._ubisoft_authenticator = ubisoft_authenticator
         self._user_agent = user_agent
 
