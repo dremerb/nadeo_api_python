@@ -1,5 +1,9 @@
 {
-  "UBISOFT_LOGIN": "name@domain.tld",
+  "UBISOFT_LOGIN": "mail@domain.tld",
   "UBISOFT_PASSWORD": "hunter2",
-  "USER_AGENT": "Some descriptive description / discord: discordhandle / name@domain.tld"
+  "USER_AGENT": "tm2020.py / discord: yourusername / mail@domain.tld",
+  "TM_API_IDENTIFIER": "check https://webservices.openplanet.dev/oauth/auth (Machine-to-machine flow)",
+  "TM_API_SECRET": "check https://webservices.openplanet.dev/oauth/auth (Machine-to-machine flow)",
+  "OAUTH_SECRET": "check https://webservices.openplanet.dev/oauth/auth (Machine-to-machine flow)"
 }
+
