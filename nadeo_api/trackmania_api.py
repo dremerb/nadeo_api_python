@@ -19,9 +19,9 @@ class TrackmaniaAPI:
         return result.json()
 
     def get_account_name(self, player_uids: Union[str, List[str]]):
-        url = "https://api.trackmania.com/api/display-names?accountId[]="
-        if isinstance(player_uids, tuple):
-            url += ",".join(player_uids)
+        url = "https://api.trackmania.com/api/display-names?"
+        if isinstance(player_uids, tuple) or isinstance(player_uids, list):
+            url += "accountId[]=" + "&accountId[]=".join(player_uids)
         else:
-            url += player_uids
+            url += f"accountId[]={player_uids}"
         return self._request_executor(url)
