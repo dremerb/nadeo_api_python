@@ -8,6 +8,10 @@ from nadeo_api.nadeo_live_services import NadeoLiveServices
 
 class NadeoAPI:
     def __init__(self, account_mail: str, password: str, user_agent: str, client_id: str, client_secret: str):
+        if len(client_id) != 20:
+            raise AssertionError("client_id is expected to be 20 characters long.")
+        if len(client_secret) != 40:
+            raise AssertionError("client_secret is expected to be 40 characters long.")
         self.ubisoft_authenticator = UbisoftAuthenticator(account_mail, password, user_agent)
         # force login by accessing variable. Raises error on bad credentials
         self.ubisoft_authenticator.ticket
