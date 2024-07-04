@@ -9,14 +9,14 @@ AUDIENCES = ["NadeoServices", "NadeoLiveServices", "NadeoClubServices"]
 
 def valid_token(func):
     def check_token_valid(self):
-        # check if timestamp for earliest refresh is set.
+        # check if timestamp for earliest refresh and expiration are set.
         # check if current datetime is between earliest refresh date and expiration
         # -> trigger token refresh
-        if self._token_refresh_ts < datetime.now().timestamp() < self._token_expires:
-            self._token_refresh()
+        if not self._token_refresh_ts or self._token_expires or not self._token_refresh_ts < datetime.now().timestamp() < self._token_expires:
+            self._services_login_refresh()
             return func(self)
         # all tokens expired, log in "for the first time"
-        elif datetime.now().timestamp() < self._token_expires:
+        elif self._token_expires < datetime.now().timestamp():
             self._service_login_initial()
             return func(self)
         # else all tokens still valid
