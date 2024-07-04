@@ -8,10 +8,6 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.8.1"
 requests = "^2.31.0"
-pytest = "^7.4.3"
-
-[tool.poetry.group.test]
-optional = true
 
 [tool.poetry.group.test.dependencies]
 pytest = "^7.4.3"
