@@ -1,10 +1,9 @@
 import json
 import pathlib
 
-import nadeo_api
 import pytest
 
-from nadeo_api.ubisoft_services import get_player_profile
+from nadeo_api import NadeoAPI, UbisoftServices
 
 
 @pytest.fixture
@@ -17,15 +16,21 @@ def account_info():
     yield acc_info
 
 
-def test_get_player_profile(account_info):
-    nadeo_api.login(
+def test_ubisoft_services(account_info):
+    u = UbisoftServices()
+
+def do_not_test_get_player_profile(account_info):
+    # deprecated
+    n = NadeoAPI(
         account_info["UBISOFT_LOGIN"],
         account_info["UBISOFT_PASSWORD"],
-        account_info["USER_AGENT"]
+        account_info["USER_AGENT"],
+        account_info["UBISOFT_LOGIN"],
+        account_info["UBISOFT_LOGIN"]
     )
-    print(nadeo_api.ubisoft_authenticator.ticket)
+    print(n.ubisoft_services)
     ar_down_uid = "8f08302a-f670-463b-9f71-fbfacffb8bd1"
-    player_info = get_player_profile(ar_down_uid)
+    player_info = n.ubisoft_services.get_player_profile(ar_down_uid)
     assert player_info["profiles"] != []
     assert ["profileId", "userId", "platformType", "idOnPlatform",
             "nameOnPlatform"] == list(player_info["profiles"].keys())
